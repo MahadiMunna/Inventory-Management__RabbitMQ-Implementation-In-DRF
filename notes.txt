@@ -1,0 +1,44 @@
+start a djnago project
+django-admin startproject rabbitmq_app
+
+create an app inside the project
+django-admin startapp app
+
+add the app to the project settings
+
+now create venv and activate it
+virtualenv -p python3.13 env
+source env/bin/activate
+
+install requirements
+pip install -r requirements.txt
+
+create models, seralizers and views for inventory
+make migrations and migrate models
+python manage.py makemigrations
+python manage.py migrate
+
+the start the sever
+python manage.py runserver
+
+now its time for setup rabbitmq
+we will use docker for rabbitmq server
+
+now install docker
+https://docs.docker.com/engine/install/ubuntu/ docker installation
+https://docs.docker.com/engine/install/linux-postinstall/ post installation commands
+
+after successfull installation we have to run rabbitmq server
+create docker-compose.yaml
+
+run docker compose up -d
+
+check 8080 port of localhost, rabbitmq is running
+
+now create producer and consumer for rabbitmq
+
+then for run consumer you have to use management commands as it is under the django project
+create management/commands/run_consumer.py dir inside app
+
+now run 
+python manage.py run_consumer.py
